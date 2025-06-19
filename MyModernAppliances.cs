@@ -39,6 +39,7 @@ namespace ModernAppliances
             foundAppliance = null;
 
             // Loop through Appliances
+            
             // Test appliance item number equals entered item number
             // Assign appliance in list to foundAppliance variable
 
