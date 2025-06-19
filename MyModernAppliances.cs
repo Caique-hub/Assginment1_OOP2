@@ -273,7 +273,7 @@ namespace ModernAppliances
         public override void RandomList()
         {
             // Write "Appliance Types"
-
+vzv v v  bbv vc v v v vv v
             // Write "0 - Any"
             // Write "1 – Refrigerators"
             // Write "2 – Vacuums"
