@@ -83,105 +83,106 @@ namespace ModernAppliances
         /// </summary>
         public override void DisplayRefrigerators()
         {
-            // Write "Possible options:"
+            Console.WriteLine("Possible options:");
 
-            // Write "0 - Any"
-            // Write "2 - Double doors"
-            // Write "3 - Three doors"
-            // Write "4 - Four doors"
+            Console.WriteLine("0 - Any");
+            Console.WriteLine("2 - Double doors");
+            Console.WriteLine("3 - Three doors");
+            Console.WriteLine("4 - Four doors");
 
-            // Write "Enter number of doors: "
+            Console.WriteLine("Enter number of doors: ");
+            string input = Console.ReadLine();
+            short doors;
 
-            // Create variable to hold entered number of doors
+            if (!short.TryParse(input, out doors) || (doors != 0 && doors != 2 && doors != 3 && doors != 4))
+            {
+                Console.WriteLine("Invalid option.");
+                return;
+            }
 
-            // Get user input as string and assign to variable
+            List<Appliances> found = new List<Appliances>();
 
-            // Convert user input from string to int and store as number of doors variable.
-
-            // Create list to hold found Appliance objects
-
-            // Iterate/loop through Appliances
-                // Test that current appliance is a refrigerator
-                    // Down cast Appliance to Refrigerator
-                    // Refrigerator refrigerator = (Refrigerator) appliance;
-
-                    // Test user entered 0 or refrigerator doors equals what user entered.
-                        // Add current appliance in list to found list
-
-            // Display found appliances
-            // DisplayAppliancesFromList(found, 0);
+            foreach (var appliance in Appliances)
+            {
+                if (appliance is Refrigerator refrigerator)
+                {
+                    if (doors == 0 || refrigerator.Doors == doors)
+                    {
+                        found.Add(appliance);
+                    }
+                }
+            }
+            DisplayApplianceFromList(found, 0);
         }
 
-        /// <summary>
-        /// Displays Vacuums
-        /// </summary>
-        /// <param name="grade">Grade of vacuum to find (or null for any grade)</param>
-        /// <param name="voltage">Vacuum voltage (or 0 for any voltage)</param>
         public override void DisplayVacuums()
         {
-            // Write "Possible options:"
+            Console.WriteLine("Possible options:");
+            Console.WriteLine("0 - Any");
+            Console.WriteLine("1 - Residential");
+            Console.WriteLine("2 - Commercial");
 
-            // Write "0 - Any"
-            // Write "1 - Residential"
-            // Write "2 - Commercial"
+            Console.Write("Enter grade: ");
+            string gradeInput = Console.ReadLine();
+            string grade;
 
-            // Write "Enter grade:"
+            switch (gradeInput)
+            {
+                case "0":
+                    grade = "Any";
+                    break;
+                case "1":
+                    grade = "Residential";
+                    break;
+                case "2":
+                    grade = "Commercial";
+                    break;
+                default:
+                    Console.WriteLine("Invalid option.");
+                    return;
+            }
 
-            // Get user input as string and assign to variable
+            Console.WriteLine("Possible options:");
+            Console.WriteLine("0 - Any");
+            Console.WriteLine("1 - 18 Volt");
+            Console.WriteLine("2 - 24 Volt");
 
-            // Create grade variable to hold grade to find (Any, Residential, or Commercial)
+            Console.Write("Enter voltage: ");
+            string voltageInput = Console.ReadLine();
+            short voltage;
 
-            // Test input is "0"
-                // Assign "Any" to grade
-            // Test input is "1"
-                // Assign "Residential" to grade
-            // Test input is "2"
-                // Assign "Commercial" to grade
-            // Otherwise (input is something else)
-                // Write "Invalid option."
+            switch (voltageInput)
+            {
+                case "0":
+                    voltage = 0;
+                    break;
+                case "1":
+                    voltage = 18;
+                    break;
+                case "2":
+                    voltage = 24;
+                    break;
+                default:
+                    Console.WriteLine("Invalid option.");
+                    return;
+            }
 
-                // Return to calling (previous) method
-                // return;
+            List<Appliances> found = new List<Appliances>();
 
-            // Write "Possible options:"
+            foreach (var appliance in Appliances)
+            {
+                if (appliance is Vacuum vacuum)
+                {
+                    if ((grade == "Any" || vacuum.Grade == grade) && (voltage == 0 || vacuum.BatteryVoltage == voltage))
+                    {
+                        found.Add(appliance);
+                    }
+                }
+            }
 
-            // Write "0 - Any"
-            // Write "1 - 18 Volt"
-            // Write "2 - 24 Volt"
-
-            // Write "Enter voltage:"
-
-            // Get user input as string
-            // Create variable to hold voltage
-
-            // Test input is "0"
-                // Assign 0 to voltage
-            // Test input is "1"
-                // Assign 18 to voltage
-            // Test input is "2"
-                // Assign 24 to voltage
-            // Otherwise
-                // Write "Invalid option."
-                // Return to calling (previous) method
-                // return;
-
-            // Create found variable to hold list of found appliances.
-
-            // Loop through Appliances
-                // Check if current appliance is vacuum
-                    // Down cast current Appliance to Vacuum object
-                    // Vacuum vacuum = (Vacuum)appliance;
-
-                    // Test grade is "Any" or grade is equal to current vacuum grade and voltage is 0 or voltage is equal to current vacuum voltage
-                        // Add current appliance in list to found list
-
-            // Display found appliances
-            // DisplayAppliancesFromList(found, 0);
+            DisplayAppliancesFromList(found, 0);
         }
-
-        /// <summary>
-        /// Displays microwaves
-        /// </summary>
+            
         public override void DisplayMicrowaves()
         {
             // Write "Possible options:"
@@ -271,47 +272,78 @@ namespace ModernAppliances
         /// </summary>
         public override void RandomList()
         {
-            // Write "Appliance Types"
+            Console.WriteLine("Appliance Types");
+            Console.WriteLine("0 - Any");
+            Console.WriteLine("1 – Refrigerators");
+            Console.WriteLine("2 – Vacuums");
+            Console.WriteLine("3 – Microwaves");
+            Console.WriteLine("4 – Dishwashers");
 
-            // Write "0 - Any"
-            // Write "1 – Refrigerators"
-            // Write "2 – Vacuums"
-            // Write "3 – Microwaves"
-            // Write "4 – Dishwashers"
+            Console.Write("Enter type of appliance:");
+            string typeInput = Console.ReadLine();
 
-            // Write "Enter type of appliance:"
+            Console.Write("Enter number of appliances: ");
+            string numInput = Console.ReadLine();
 
-            // Get user input as string and assign to appliance type variable
+            if (!int.TryParse(numInput, out int num) || num < 0)
+            {
+                Console.WriteLine("Invalid number of appliances.");
+                return;
+            }
 
-            // Write "Enter number of appliances: "
+            List<Appliances> found = new List<Appliances>();
 
-            // Get user input as string and assign to variable
+            foreach (var appliance in Appliances)
+            {
+                switch (typeInput)
+                {
+                    case "0":
+                        found.Add(appliance);
+                        break;
+                    case "1":
+                        if (appliance is Refrigerator)
+                        {
+                            found.Add(appliance);
+                        }
+                        break;
+                    case "2":
+                        if (appliance is Vacuum)
+                        {
+                            found.Add(appliance);
+                        }
+                        break;
+                    case "3":
+                        if (appliance is Microwave)
+                        {
+                            found.Add(appliance);
+                        }
+                        break;
+                    case "4":
+                        if (appliance is Dishwasher)
+                        {
+                            found.Add(appliance);
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Invalid appliance type.");
+                        return;
+                }
+            }
 
-            // Convert user input from string to int
+            // Randomize the List
+            RandomList rng = new Random();
+            int n = found.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                Appliances value = found[k];
+                found[k] = found[n];
+                found[n] = value;
+            }
 
-            // Create variable to hold list of found appliances
-
-            // Loop through appliances
-                // Test inputted appliance type is "0"
-                    // Add current appliance in list to found list
-                // Test inputted appliance type is "1"
-                    // Test current appliance type is Refrigerator
-                        // Add current appliance in list to found list
-                // Test inputted appliance type is "2"
-                    // Test current appliance type is Vacuum
-                        // Add current appliance in list to found list
-                // Test inputted appliance type is "3"
-                    // Test current appliance type is Microwave
-                        // Add current appliance in list to found list
-                // Test inputted appliance type is "4"
-                    // Test current appliance type is Dishwasher
-                        // Add current appliance in list to found list
-
-            // Randomize list of found appliances
-            // found.Sort(new RandomComparer());
-
-            // Display found appliances (up to max. number inputted)
-            // DisplayAppliancesFromList(found, num);
+            DisplayAppliancesFromList(found, num);
         }
+    }
     }
 }
