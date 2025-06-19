@@ -32,12 +32,10 @@ namespace ModernAppliances
             long.TryParse(input, out itemNumber);
 
             // Create 'foundAppliance' variable to hold appliance with item number
-
+            Appliance? foundAppliance = null;
             
-
             // Assign null to foundAppliance (foundAppliance may need to be set as nullable)
-
-
+            
             foundAppliance = null;
 
             // Loop through Appliances
