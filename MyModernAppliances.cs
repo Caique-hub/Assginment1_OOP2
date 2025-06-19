@@ -263,48 +263,57 @@ namespace ModernAppliances
         /// <summary>
         /// Displays dishwashers
         /// </summary>
-        public override void DisplayDishwashers()
+public override void DisplayDishwashers()
+{
+    Console.WriteLine("Possible options:");
+    Console.WriteLine("0 - Any");
+    Console.WriteLine("1 - Quietest");
+    Console.WriteLine("2 - Quieter");
+    Console.WriteLine("3 - Quiet");
+    Console.WriteLine("4 - Moderate");
+    Console.WriteLine("Enter sound rating:");
+
+    string input = Console.ReadLine();
+    string soundRating;
+
+    switch (input)
+    {
+        case "0":
+            soundRating = "Any";
+            break;
+        case "1":
+            soundRating = "Qt";
+            break;
+        case "2":
+            soundRating = "Qr";
+            break;
+        case "3":
+            soundRating = "Qu";
+            break;
+        case "4":
+            soundRating = "M";
+            break;
+        default:
+            Console.WriteLine("Invalid option.");
+            return;
+    }
+
+    List<Appliance> found = new List<Appliance>();
+
+    foreach (Appliance appliance in Appliances)
+    {
+        if (appliance is Dishwasher dishwasher)
         {
-            // Write "Possible options:"
-
-            // Write "0 - Any"
-            // Write "1 - Quietest"
-            // Write "2 - Quieter"
-            // Write "3 - Quiet"
-            // Write "4 - Moderate"
-
-            // Write "Enter sound rating:"
-
-            // Get user input as string and assign to variable
-
-            // Create variable that holds sound rating
-
-            // Test input is "0"
-                // Assign "Any" to sound rating variable
-            // Test input is "1"
-                // Assign "Qt" to sound rating variable
-            // Test input is "2"
-                // Assign "Qr" to sound rating variable
-            // Test input is "3"
-                // Assign "Qu" to sound rating variable
-            // Test input is "4"
-                // Assign "M" to sound rating variable
-            // Otherwise (input is something else)
-                // Write "Invalid option."
-                // Return to calling method
-
-            // Create variable that holds list of found appliances
-
-            // Loop through Appliances
-                // Test if current appliance is dishwasher
-                    // Down cast current Appliance to Dishwasher
-
-                    // Test sound rating is "Any" or equals soundrating for current dishwasher
-                        // Add current appliance in list to found list
-
-            // Display found appliances (up to max. number inputted)
-            // DisplayAppliancesFromList(found, 0);
+            if (soundRating == "Any" || dishwasher.SoundRating == soundRating)
+            {
+                found.Add(dishwasher);
+            }
         }
+    }
+
+    DisplayAppliancesFromList(found, 0);
+}
+
 
         /// <summary>
         /// Generates random list of appliances
