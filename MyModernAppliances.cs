@@ -1,3 +1,7 @@
+// MyModernAppliances is the main implementation class for managing appliance operations in the application.
+// It provides user-interactive features such as checking out appliances, searching by brand, displaying appliances by type,
+// and generating random appliance lists, ensuring all user prompts and outputs match the required specifications.
+
 using ModernAppliances.Entities;
 using ModernAppliances.Entities.Abstract;
 using ModernAppliances.Helpers;
